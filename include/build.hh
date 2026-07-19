@@ -46,8 +46,7 @@ inline void cmake_make(const BuildEnv &env, std::vector<std::string_view> args,
 // Installs a built package into env.install_dir(). The prefix was baked in at
 // configure time (CMAKE_INSTALL_PREFIX), so `cmake --install` needs nothing
 // more than the build directory.
-inline void cmake_install(const BuildEnv &env,
-                          const std::filesystem::path &source_path) {
+inline void cmake_install(const std::filesystem::path &source_path) {
   auto build_path = source_path;
   build_path += "_build";
 
@@ -61,7 +60,7 @@ inline void cmake_make_install(const BuildEnv &env,
                                const std::filesystem::path &source_path) {
   cmake(env, args, source_path);
   cmake_make(env, {}, source_path);
-  cmake_install(env, source_path);
+  cmake_install(source_path);
 }
 } // namespace build
 } // namespace econf
