@@ -11,8 +11,9 @@
 #include <unistd.h>
 
 namespace econf {
+// TODO: Should argc be removed?
 inline void rebuild_if_necessary(
-    int argc, char **argv,
+    [[maybe_unused]] int argc, char **argv,
     std::source_location loc = std::source_location::current()) {
   std::string_view binary = argv[0];
   const auto binary_last_modified = std::filesystem::last_write_time(binary);
@@ -55,7 +56,8 @@ inline void rebuild_if_necessary(
 
   log::info("rebuilding econf...");
   cmd::Command rebuild{"clang++"};
-  rebuild.add("-std=c++20", "-ggdb", "-O0");
+  rebuild.add("-std=c++20", "-ggdb", "-O0", "-Wall", "-Wextra", "-Wpedantic",
+              "-pedantic");
   rebuild.add("-o", std::string(argv[0]), loc.file_name());
   int status = cmd::run_and_wait(rebuild);
   if (status != 0) {
