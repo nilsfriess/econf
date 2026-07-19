@@ -7,10 +7,10 @@ Compile the econf binary
 > g++ -std=c++20 -o econf econf.cc
 ```
 and then run it to download and compile one or several of the available packages:
-```
+```bash
 > ./econf --download strumpack --download openblas --download system-mpi
 ```
-This would download and build the [STRUMPACK](https://portal.nersc.gov/project/sparse/strumpack/) solver package and the [OpenBLAS](https://github.com/OpenMathLib/OpenBLAS) BLAS library, as well as necessary dependencies such as the [METIS](https://github.com/KarypisLab/METIS) graph partitioner that STRUMPACK uses. The option `--download system-mpi` tells `econf` to try to use the system's MPI installation instead of trying to download one. All libraries are installed to a local folder (`./dist-econf-release` by default) which can either be added to `$PATH` to make the libraries available for othe programs or added to search paths such as `CMAKE_PREFIX_PATH` for other libraries.
+This downloads and builds the [STRUMPACK](https://portal.nersc.gov/project/sparse/strumpack/) solver package and the [OpenBLAS](https://github.com/OpenMathLib/OpenBLAS) BLAS library, as well as necessary dependencies such as the [METIS](https://github.com/KarypisLab/METIS) graph partitioner that STRUMPACK uses. The option `--download system-mpi` tells `econf` to try to use the system's MPI installation instead of trying to download one. All libraries are installed to a local folder (`./dist-econf-release` by default) which can either be added to `$PATH` to make the libraries available for othe programs or added to search paths such as `CMAKE_PREFIX_PATH` for other libraries.
 
 Run the `econf` program with the option `--help` to list all options and available packages.
 
