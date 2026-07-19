@@ -26,7 +26,7 @@ struct BuildEnv {
   std::string cc = "/usr/bin/clang";
   std::string cxx = "/usr/bin/clang++";
   std::string dist_name = "econf"; // infix in the install dir name
-  Args args;
+  Args args{};
 
   // Shared install prefix, a sibling of build_dir. The mode suffix keeps debug
   // and release trees from clobbering each other; everything installs here so

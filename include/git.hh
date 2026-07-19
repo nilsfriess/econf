@@ -14,9 +14,9 @@
 namespace econf {
 namespace git {
 struct Source {
-  std::string_view url;
-  std::string_view tag;
-  std::string_view commit;
+  std::string_view url{};
+  std::string_view tag{};
+  std::string_view commit{};
   bool resursive = false;
 };
 

@@ -19,8 +19,8 @@ public:
   using BuildFn = std::function<void(const BuildEnv &)>;
   struct Entry {
     BuildFn build;
-    std::set<std::string> deps;
-    std::string is_variant_of;
+    std::set<std::string> deps{};
+    std::string is_variant_of{};
   };
 
   static Registry &instance() {
@@ -29,7 +29,10 @@ public:
   }
 
   void add(std::string name, BuildFn fn, std::set<std::string> deps = {}) {
-    entries_[std::move(name)] = Entry{std::move(fn), std::move(deps)};
+    entries_[std::move(name)] = Entry{
+        .build = std::move(fn),
+        .deps = std::move(deps),
+    };
   }
 
   /* @brief Add a so-called *variant package* (e.g. MPICH is a variant of
