@@ -1,1 +1,7 @@
-#include "packages/strumpack/strumpack.hh"
+#include "packages/gklib.hh"
+#include "packages/metis.hh"
+#include "packages/mpich.hh"
+#include "packages/openmpi.hh"
+#include "packages/strumpack.hh"
+#include "packages/system-blas.hh"
+#include "packages/system-mpi.hh"
